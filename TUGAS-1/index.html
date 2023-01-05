@@ -63,7 +63,7 @@
        }
        @layer components {
          .hamburger {
-           @apply h-9 flex flex-col justify-evenly pl-5 cursor-pointer; 
+           @apply h-10 flex flex-col justify-evenly ml-5 cursor-pointer relative; 
          }
        }
        @layer components {
@@ -120,17 +120,26 @@
 </head>
 <body class="font-popins bg-slate-100">
     <div id="index" class="">
-        <!-- navbar 1 -->
-        <div class="w-full h-16 flex items-center bg-gradient-to-r from-cyan-900 to-cyan-700">
+        <!-- nav container -->
+      <div class="fixed left-0 right-0 h-full mb-40 z-20">
+          <!-- navbar 1 -->
+          <div class="w-full h-16 flex items-center bg-gradient-to-r from-cyan-900 to-cyan-700">
             <!-- hamburger -->
-            <div class="hamburger">
-                <div class="spn"></div>
-                <div class="spn"></div>
-                <div class="spn"></div>
+            <div class="group">
+                <label for="hmbgr" class="hamburger">
+                    <input type="checkbox" name="hmbgr" id="hmbgr" class="absolute sr-only peer">
+                    <div class="z-10 absolute top-14 h-[100vh] w-72 bg-cyan-900  -translate-x-80
+                    p-5 transition-all ease-in-out duration-700 peer-checked:fixed peer-checked:opacity-100 peer-checked:-translate-x-6">
+                        <p>heloo</p>
+                    </div>
+                    <div class="spn peer-checked:origin-top-left peer-checked:duration-300 peer-checked:rotate-45"></div>
+                    <div class="spn peer-checked:scale-0 peer-checked:duration-300"></div>
+                    <div class="spn peer-checked:origin-bottom-left peer-checked:duration-300 peer-checked:-rotate-45 "></div>
+                </label>
             </div>
 
             <!-- admin setting -->
-            <button name="" id="" class=" relative text-slate-50 font-ubuntu font-light bg-transparent flex items-center justify-center border-none outline-none rounded-sm ml-5 group">
+            <button name="" id="" class=" relative text-slate-50 font-ubuntu font-light bg-transparent flex items-center justify-center border-none outline-none rounded-sm ml-5 border-4 group">
                <p> Admin Settings </p>
                <img src="./img/icons8-expand-arrow-24.png" alt="" class="w-6 h-6 transsition-all group-focus:rotate-180 group-focus:duration-300">
                <div class="absolute top-full hidden group-focus:block min-w-full w-max bg-slate-50 mt-1 rounded-md text-slate-600 text-left transition-all group-focus:duration-700">
@@ -240,9 +249,10 @@
                 <a href="#"  class="lnk-styl">Data & Repost</a>
             </div>
         </div>
+      </div>
 
         <!-- carousel -->
-        <div class="w-full flex justify-evenly gap-5 p-5">
+        <div class="w-full relative top-28 flex justify-evenly gap-5 p-5">
             <div class="cntnr bg-gradient-to-r from-blue-600 to-teal-300">
                 <img src="./img/icons8-document-50.png" alt="" class="w-11 h-11">
                 <div class=" cntnr-content ">
@@ -284,7 +294,7 @@
         </div>
 
         <!-- dashboard content -->
-        <div class="flex flex-col w-full h-full gap-5 p-5 pb-14">
+        <div class="flex flex-col w-full h-full gap-5 pt-32 p-5 pb-14">
             <!-- 1 -->
             <div class=" flex gap-5">
                 <!-- a -->
