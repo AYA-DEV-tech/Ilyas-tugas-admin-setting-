@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index | Admin</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="./img/logoBungaCrop.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link 
+    href="https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                popins : 'poppins',
+                ubuntu: 'Ubuntu'
+              }
+            }
+          }
+        }
+      </script>
+      <style type="text/tailwindcss">
+        *::-webkit-scrollbar{
+           display: none;
+       }     
+       @layer components {
+         .txt-fld {
+           @apply border-2 p-2 pl-4 w-full rounded-md outline-none focus:border-green-400; 
+         }
+       }
+       @layer components {
+         .btn {
+           @apply border-2 py-2 w-20 rounded-md; 
+         }
+       }
+       @layer components {
+         .upld-fl {
+           @apply w-full h-64 flex flex-col gap-8 pl-8 relative; 
+         }
+       }
+       @layer components {
+         .off {
+           @apply inline-flex items-center gap-1; 
+         }
+       }
+       @layer components {
+         .lnk-styl {
+           @apply text-slate-800 font-thin; 
+         }
+       }
+       @layer components {
+         .on {
+           @apply bg-slate-100 h-full border-b-4 border-b-cyan-800 px-2; 
+         }
+       }
+       @layer components {
+         .hamburger {
+           @apply h-9 flex flex-col justify-evenly pl-5; 
+         }
+       }
+       @layer components {
+         .spn {
+           @apply bg-slate-100 w-8 h-1; 
+         }
+       }
+       @layer components {
+         .notif {
+           @apply rounded-full flex justify-center bg-red-500 w-6 h-6 absolute bottom-3 left-4 items-center; 
+         }
+       }
+       @layer components {
+         .left {
+           @apply w-3 h-3 rounded-full bg-slate-50 checked:translate-x-3 checked:bg-green-500; 
+         }
+       }
+       @layer components {
+         .right {
+           @apply w-3 h-3 rounded-full bg-slate-50 ; 
+         }
+        }
+     </style>
+</head>
+<body class="font-popins bg-slate-100">
+    <div id="app" class="">
+        <!-- navbar 1 -->
+        <div class="w-full h-16 flex items-center bg-gradient-to-r from-cyan-900 to-cyan-700">
+            <!-- hamburger -->
+            <div class="hamburger">
+                <div class="spn"></div>
+                <div class="spn"></div>
+                <div class="spn"></div>
+            </div>
+
+            <!-- admin setting -->
+            <select name="" id="" class=" text-slate-50 font-ubuntu font-light bg-transparent border-none outline-none rounded-xl ml-5">
+                <option value="" class="bg-cyan-900 text-slate-50 ">Admin Settings</option>
+                <option value="" class="bg-cyan-900 text-slate-50 ">Admin Settings</option>
+                <option value="" class="bg-cyan-900 text-slate-50 ">Admin Settings</option>
+            </select>
+
+            <!-- button pos -->
+            <button class="bg-green-500 text-slate-50 rounded-full flex items-center px-3 py-2 ml-5">
+                <img src="./img/icons8-shopping-cart-32.png" alt="" class="w-6"> 
+                POS
+            </button>
+            <img src="./img/icons8-full-screen-48.png" alt="" class="w-6 ml-5">
+
+            <!-- toggle -->
+            <div class=" border-2 border-slate-50 rounded-full w-8 h-5 ml-5 flex items-center cursor-pointer ">
+                <label class="left"  for="toggle"></label>
+            </div>
+            <input type="checkbox" name="toggle" id="toggle" class="block">
+            <!-- logo bunga -->
+            <img src="./img/logoBungaCrop.png" alt="" class="w-14 mx-auto">
+
+            <select name="" id="" class=" text-slate-50 font-ubuntu font-light bg-transparent border-none outline-none rounded-xl mr-5">
+                <option value="" class="bg-cyan-900 text-slate-50 ">language</option>
+                <option value="" class="bg-cyan-900 text-slate-50 ">John Doe</option>
+                <option value="" class="bg-cyan-900 text-slate-50 ">John Doe</option>
+            </select>
+
+            <div class="flex mr-6 relative">
+                <img src="./img/icons8-doorbell-24.png" alt="" class="w-6">
+                <div class="notif">0</div>
+            </div>
+
+            <div class="flex mr-6 relative">
+                <img src="./img/icons8-clock-24.png" alt="" class="w-6">
+                <div class="notif">off</div>
+            </div>
+
+            <div class="flex mr-6 relative">
+                <img src="./img/icons8-envelope-48.png" alt="" class="w-6">
+                <div class="notif bg-orange-400">0</div>
+            </div>
+            <img src="./img/icons8-user-16.png" alt="" class="w-9 rounded-full mr-2">
+
+            <select name="" id="" class=" text-slate-50 font-ubuntu font-light bg-transparent border-none outline-none rounded-xl mr-5">
+                <option value="" class="bg-cyan-900 text-slate-50 ">John Doe</option>
+                <option value="" class="bg-cyan-900 text-slate-50 ">John Doe</option>
+                <option value="" class="bg-cyan-900 text-slate-50 ">John Doe</option>
+            </select>
+        </div>
+
+        <!-- navbar 2 -->
+        <div class="w-full flex items-center h-12 bg-slate-50 gap-7 pl-5 shadow-md">
+            <div class="off group" :class="{on: page === 'dashboard'}" @click="page ='dashboard'">
+                <img src="./img/icons8-home-48.png" alt="" class="w-4">
+                <a href="./index.html"  class="lnk-styl" >Dashboard</a>
+            </div>
+            <div class="off" :class="{on: page === 'Sales'}" @click="page ='Sales'">
+                <img src="./img/icons8-shopping-cart-48.png" alt="" class="w-4">
+                <a href="#"  class="lnk-styl">Sales</a>
+            </div>
+            <div class="off" :class="{on: page === 'CRM'}" @click="page ='CRM'">
+                <img src="./img/icons8-diamond-64.png" alt="" class="w-4">
+                <a href="#"  class="lnk-styl" >CRM</a>
+            </div>
+            <div class="off" :class="{on: page === 'Stock Manager'}" @click="page ='Stock Manager'">
+                <img src="./img/icons8-sheets-24 (1).png" alt="" class="w-4">
+                <a href="#"  class="lnk-styl" >Stock Manager</a>
+            </div>
+            <div class="off" :class="{on: page === 'Finance'}" @click="page ='Finance'">
+                <img src="./img/icons8-cash-30.png" alt="" class="w-4">
+                <a href="#"  class="lnk-styl">Finance</a>
+            </div>
+            <div class="off" :class="{on: page === 'Project & Task'}" @click="page ='Project & Task'">
+                <img src="./img/icons8-suitcase-64.png" alt="" class="w-4">
+                <a href="#"  class="lnk-styl">Project & Task</a>
+            </div>
+            <div class="off" :class="{on: page === 'HRM'}" @click="page ='HRM'">
+                <img src="./img/icons8-achievement-64.png" alt="" class="w-4">
+                <a href="#"  class="lnk-styl">HRM</a>
+            </div>
+            <div class="off" :class="{on: page === 'Miscellaneous'}" @click="page ='Miscellaneous'">
+                <img src="./img/icons8-star-50.png" alt="" class="w-4">
+                <a href="#"  class="lnk-styl">Miscellaneous</a>
+            </div>
+            <div class="off" :class="{on: page === 'Data & Repost'}" @click="page ='Data & Repost'">
+                <img src="./img/icons8-pie-chart-24.png" alt="" class="w-4">
+                <a href="#"  class="lnk-styl">Data & Repost</a>
+            </div>
+        </div>
+        <h1 class="mt-10 ml-7 text-3xl font-semibold font-ubuntu text-slate-900">BUSINESS SETTINGS</h1>
+
+        <!-- container  -->
+        <div class="flex">
+           <!-- kolom edit -->
+        <div class="w-2/4 h-[750px] m-8 bg-white shadow-xl rounded-lg">
+            <form action="" class="flex flex-col gap-3 p-10">
+                <div class="flex flex-col gap-2">
+                    <label class="text-slate-600" for="Company"> Company </label>
+                    <input type="text" name="Company" id="Company" class="txt-fld">
+                </div>
+                
+                <div class="flex flex-col gap-2">
+                    <label class="text-slate-600" for="Adress">Adress</label>
+                    <input type="text" name="Adress" id="Adress" class="txt-fld">
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="text-slate-600" for="City">City</label>
+                    <input type="text" name="City" id="City" class="txt-fld">
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="text-slate-600" for=" Region">Region</label>
+                    <input type="text" name=" Region" id=" Region" class="txt-fld">
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="text-slate-600" for="Country">Country</label>
+                    <input type="text" name="Country" id="Country" class="txt-fld">
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="text-slate-600" for="PostBox">PostBox</label>
+                    <input type="text" name="PostBox" id="PostBox" class="txt-fld">
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="text-slate-600" for="TAX ID">TAX ID</label>
+                    <input type="text" name="TAX ID" id="TAX ID" class="txt-fld">
+                </div>
+                
+               
+
+                <div class="mt-3 flex gap-2">
+                    <button type="submit" class="btn bg-red-500 text-stone-50 hover:bg-red-300 hover:text-stone-900 ">Cancle</button>
+                <button type="submit" class="btn bg-green-500 text-stone-50 hover:bg-green-300 hover:text-stone-900">Update</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- kolom upload gambar -->
+        <div class="w-2/4 h-[790px] m-8 bg-white shadow-xl rounded-lg gap-2">
+            <div class="upld-fl mt-5">
+                <h1>Company Favicon</h1>
+                <img src="./img/images-removebg-preview.png" alt="" class="w-28">
+                <input type="file" src="" alt=""> 
+                <p class="absolute right-36 bottom-16 text-slate-500">Leaave blank you do not want to update </p>
+
+            </div>
+            <div class="upld-fl">
+                <h1>Theme Logo</h1>
+                <img src="./img/images-removebg-preview.png" alt="" class="w-28">
+                <input type="file" src="" alt=""> 
+                <p class="absolute right-36 bottom-16 text-slate-500">Leaave blank you do not want to update </p>
+            </div>
+            <div class="upld-fl">
+                  <h1>Company & Invoice Logo</h1>
+                  <img src="./img/images-removebg-preview.png" alt="" class="w-28">
+                  <input type="file" src="" alt=""> 
+                  <p class="absolute right-36 bottom-16 text-slate-500">Leaave blank you do not want to update </p>
+            </div>
+        </div>
+       </div>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+</html>

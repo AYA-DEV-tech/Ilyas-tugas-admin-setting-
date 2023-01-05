@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Dashboard</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="./img/logoBungaCrop.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link 
+    href="https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                popins : 'poppins',
+                ubuntu: 'Ubuntu'
+              }
+            }
+          }
+        }
+      </script>
+      <style type="text/tailwindcss">
+        *::-webkit-scrollbar{
+           display: none;
+       }   
+       #progress{
+        background: conic-gradient(rgb(71, 204, 160) 335deg, white 0deg);
+       }
+       @layer components {
+         .txt-fld {
+           @apply border-2 p-2 pl-4 w-full rounded-md outline-none focus:border-green-400; 
+         }
+       }
+       @layer components {
+         .btn {
+           @apply border-2 py-2 w-20 rounded-md; 
+         }
+       }
+       @layer components {
+         .upld-fl {
+           @apply w-full h-64 flex flex-col gap-8 pl-8 relative; 
+         }
+       }
+       @layer components {
+         .off {
+           @apply inline-flex items-center gap-1; 
+         }
+       }
+       @layer components {
+         .lnk-styl {
+           @apply text-slate-800 font-thin; 
+         }
+       }
+       @layer components {
+         .on {
+           @apply bg-slate-100 h-full border-b-4 border-b-cyan-800 px-2; 
+         }
+       }
+       @layer components {
+         .hamburger {
+           @apply h-9 flex flex-col justify-evenly pl-5 cursor-pointer; 
+         }
+       }
+       @layer components {
+         .spn {
+           @apply bg-slate-100 w-8 h-1; 
+         }
+       }
+       @layer components {
+         .notif {
+           @apply rounded-full flex justify-center bg-red-500 w-5 h-5 absolute bottom-3 left-4 items-center; 
+         }
+       }
+       @layer components {
+         .left {
+           @apply w-3 h-3 rounded-full bg-slate-50; 
+         }
+       }
+       @layer components {
+         .right {
+           @apply w-3 h-3 rounded-full bg-slate-50 transform translate-x-3; 
+         }
+       }
+       @layer components {
+         .cntnr {
+           @apply flex items-center gap-7 w-1/4 px-7; 
+         }
+       }
+       @layer components {
+         .cntnr-content {
+           @apply text-white text-base px-5 py-2; 
+         }
+       }
+       @layer components {
+         .container-dasboard {
+           @apply bg-white rounded-md h-96 shadow-sm p-5 ; 
+         }
+       }
+       @layer components {
+         .title-font {
+           @apply font-semibold text-slate-500 text-xl font-ubuntu ; 
+         }
+       }
+       @layer components {
+         .tm-btn {
+           @apply p-2 bg-blue-500 text-slate-50 rounded-md; 
+         }
+       }
+       @layer components {
+         .active {
+           @apply border-2 border-b-0 rounded-t-lg text-slate-600; 
+         }
+       }
+     </style>
+</head>
+<body class="font-popins bg-slate-100">
+    <div id="index" class="">
+        <!-- navbar 1 -->
+        <div class="w-full h-16 flex items-center bg-gradient-to-r from-cyan-900 to-cyan-700">
+            <!-- hamburger -->
+            <div class="hamburger">
+                <div class="spn"></div>
+                <div class="spn"></div>
+                <div class="spn"></div>
+            </div>
+
+            <!-- admin setting -->
+            <button name="" id="" class=" relative text-slate-50 font-ubuntu font-light bg-transparent flex items-center justify-center border-none outline-none rounded-sm ml-5 group">
+               <p> Admin Settings </p>
+               <img src="./img/icons8-expand-arrow-24.png" alt="" class="w-6 h-6 transsition-all group-focus:rotate-180 group-focus:duration-300">
+               <div class="absolute top-full hidden group-focus:block min-w-full w-max bg-slate-50 mt-1 rounded-md text-slate-600 text-left transition-all group-focus:duration-700">
+                <ul>
+                    <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
+                    <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
+                    <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
+                    <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
+                </ul>
+               </div>
+            </button>
+
+            <!-- button pos -->
+            <button class="bg-green-500 text-slate-50 rounded-full flex items-center px-3 py-2 ml-5">
+                <img src="./img/icons8-shopping-cart-32.png" alt="" class="w-6"> 
+                POS
+            </button>
+            <img src="./img/icons8-full-screen-48.png" alt="" class="w-6 ml-5">
+
+            <!-- toggle -->
+            <label for="toggel" class="border-2 relative border-slate-50 rounded-full w-8 h-5 ml-5 flex items-center cursor-pointer group  ">
+                <input type="checkbox" name="toggel" id="toggel" class="sr-only peer">
+                <div class="absolute bg-white w-3 h-3 rounded-full transition-all duration-700 peer-checked:left-4 peer-checked:bg-green-300 "></div>
+            </label>
+            <!-- logo bunga -->
+            <img src="./img/logoBungaCrop.png" alt="" class="w-14 mx-auto">
+
+            <button name="" id="" class=" relative text-slate-50 font-ubuntu font-light bg-transparent flex items-center justify-center border-none outline-none rounded-sm mr-5 group">
+                <p> Language </p>
+                <img src="./img/icons8-expand-arrow-24.png" alt="" class="w-6 h-6 transsition-all group-focus:rotate-180 group-focus:duration-300">
+                <div class="absolute top-full hidden group-focus:block min-w-full w-max bg-slate-50 mt-1 rounded-md text-slate-600 text-left transition-all group-focus:duration-700">
+                 <ul>
+                     <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
+                     <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
+                     <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
+                     <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
+                 </ul>
+                </div>
+             </button>
+
+            <div class="flex mr-6 relative">
+                <img src="./img/icons8-doorbell-24.png" alt="" class="w-6">
+                <div class="notif text-sm">0</div>
+            </div>
+
+            <div class="flex mr-6 relative">
+                <img src="./img/icons8-clock-24.png" alt="" class="w-6">
+                <div class="notif h-5 w-7 text-sm">off</div>
+            </div>
+
+            <div class="flex mr-6 relative">
+                <img src="./img/icons8-envelope-48.png" alt="" class="w-6">
+                <div class="notif bg-orange-400 text-sm">0</div>
+            </div>
+            <img src="./img/icons8-user-16.png" alt="" class="w-9 rounded-full mr-2">
+
+            <button name="" id="" class=" relative text-slate-50 font-ubuntu font-light bg-transparent flex items-center justify-center border-none outline-none rounded-xl mr-5 group">
+                <p> Jhon Doe </p>
+                <img src="./img/icons8-expand-arrow-24.png" alt="" class="w-6 h-6 transsition-all group-focus:rotate-180 group-focus:duration-300">
+                <div class="absolute top-full hidden group-focus:block min-w-full w-max bg-slate-50 mt-1 rounded-md text-slate-600 text-left transition-all group-focus:duration-700">
+                 <ul>
+                     <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
+                     <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
+                     <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
+                     <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
+                 </ul>
+                </div>
+             </button>
+        </div>
+
+        <!-- navbar 2 -->
+        <div class="w-full flex items-center h-12 bg-white gap-7 pl-5 shadow-md">
+            <div class="off group" :class="{on: page === 'dashboard'}" @click="page ='dashboard'">
+                <img src="./img/icons8-home-48.png" alt="" class="w-4">
+                <a href="./index.html"  class="lnk-styl" >Dashboard</a>
+            </div>
+            <div class="off" :class="{on: page === 'Sales'}" @click="page ='Sales'">
+                <img src="./img/icons8-shopping-cart-48.png" alt="" class="w-4">
+                <a href="#"  class="lnk-styl">Sales</a>
+            </div>
+            <div class="off" :class="{on: page === 'CRM'}" @click="page ='CRM'">
+                <img src="./img/icons8-diamond-64.png" alt="" class="w-4">
+                <a href="#"  class="lnk-styl" >CRM</a>
+            </div>
+            <div class="off" :class="{on: page === 'Stock Manager'}" @click="page ='Stock Manager'">
+                <img src="./img/icons8-sheets-24 (1).png" alt="" class="w-4">
+                <a href="#"  class="lnk-styl" >Stock Manager</a>
+            </div>
+            <div class="off" :class="{on: page === 'Finance'}" @click="page ='Finance'">
+                <img src="./img/icons8-cash-30.png" alt="" class="w-4">
+                <a href="#"  class="lnk-styl">Finance</a>
+            </div>
+            <div class="off" :class="{on: page === 'Project & Task'}" @click="page ='Project & Task'">
+                <img src="./img/icons8-suitcase-64.png" alt="" class="w-4">
+                <a href="#"  class="lnk-styl">Project & Task</a>
+            </div>
+            <div class="off" :class="{on: page === 'HRM'}" @click="page ='HRM'">
+                <img src="./img/icons8-achievement-64.png" alt="" class="w-4">
+                <a href="#"  class="lnk-styl">HRM</a>
+            </div>
+            <div class="off" :class="{on: page === 'Miscellaneous'}" @click="page ='Miscellaneous'">
+                <img src="./img/icons8-star-50.png" alt="" class="w-4">
+                <a href="#"  class="lnk-styl">Miscellaneous</a>
+            </div>
+            <div class="off" :class="{on: page === 'Data & Repost'}" @click="page ='Data & Repost'">
+                <img src="./img/icons8-pie-chart-24.png" alt="" class="w-4">
+                <a href="#"  class="lnk-styl">Data & Repost</a>
+            </div>
+        </div>
+
+        <!-- carousel -->
+        <div class="w-full flex justify-evenly gap-5 p-5">
+            <div class="cntnr bg-gradient-to-r from-blue-600 to-teal-300">
+                <img src="./img/icons8-document-50.png" alt="" class="w-11 h-11">
+                <div class=" cntnr-content ">
+                    <h2> Today Invoices</h2>
+                    <h3>+ 0</h3>
+                </div>
+            </div>
+            <div class="cntnr bg-gradient-to-r from-orange-600 to-orange-300">
+                <img src="./img/icons8-buying-50.png" alt="" class="w-11 h-11">
+                <div class="cntnr-content ">
+                    <h2> Today Sales</h2>
+                    <h3 class="flex items-center gap-1">
+                        <img src="./img/icons8-up-3-50.png" alt="" class="w-3 h-3">
+                        0.00$
+                    </h3>
+                </div>
+            </div>
+            <div class="cntnr  bg-gradient-to-r from-red-600 to-red-300">
+                <img src="./img/icons8-repository-50.png" alt="" class="w-11 h-11">
+                <div class="cntnr-content ">
+                    <h2> The Month Invoices</h2>
+                    <h3 class="flex items-center gap-1">
+                        <img src="./img/icons8-up-3-50.png" alt="" class="w-3 h-3">
+                        1
+                    </h3>
+                </div>
+            </div>
+            <div class="cntnr bg-gradient-to-r from-green-600 to-green-300">
+                <img src="./img/icons8-wallet-50.png" alt="" class="w-11 h-11">
+                <div class="cntnr-content ">
+                    <h2> This Month Sales</h2>
+                    <h3 class="flex items-center gap-1">
+                        <img src="./img/icons8-up-3-50.png" alt="" class="w-3 h-3">
+                        108.00$
+                    </h3>
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- dashboard content -->
+        <div class="flex flex-col w-full h-full gap-5 p-5 pb-14">
+            <!-- 1 -->
+            <div class=" flex gap-5">
+                <!-- a -->
+                <div class="container-dasboard h-full w-3/4">
+                   <div class="flex justify-between ">
+                    <h1 class="title-font"> GRAPHICAL PRESENTATION OF INVOICES AND SALES DONE IN LAST 30 DAYS</h1>
+                   <div class=" flex gap-5">
+                       <img src="./img/icons8-reset-24.png" alt="" class="w-5 h-5">
+                        <img src="./img/icons8-full-screen-24.png" alt="" class="w-5 h-5">
+                   </div>
+                   </div>
+                   <div id="columnchart_values"></div>
+
+                   <div class="flex justify-evenly mb-10">
+                    
+                   <!-- 1 -->
+                   <div class="flex flex-col">
+                            <h1 class="title-font font-medium text-sky-500">0.00$</h1>
+                            <p class="text-slate-700">Today Sales</p>
+                            <div id="progres" class="bg-slate-300 rounded-xl h-3 w-40">
+                                <div id="progres-done" class="bg-sky-500 rounded-xl h-3 w-0"></div>
+                            </div>
+                    </div>
+               <!-- 2 -->
+               <div class="flex flex-col">
+                    <h1 class="title-font font-medium text-green-500">108.00$</h1>
+                    <p class="text-slate-700">Today Income</p>
+                    <div id="progres" class="bg-slate-300 rounded-xl h-3 w-40">
+                        <div id="progres-done" class="bg-green-500 rounded-xl h-3 w-20"></div>
+                    </div>
+               </div>
+               <!-- 3 -->
+               <div class="flex flex-col">
+                    <h1 class="title-font font-medium text-red-500">0.00$</h1>
+                    <p class="text-slate-700">Today Expenses</p>
+                    <div id="progres" class="bg-slate-300 rounded-xl h-3 w-40">
+                        <div id="progres-done" class="bg-red-500 rounded-xl h-3 w-0"></div>
+                    </div>
+               </div>
+               <!-- 4 -->
+               <div class="flex flex-col">
+                    <h1 class="title-font font-medium text-purple-500">108.00$</h1>
+                    <p class="text-slate-700">Today Revenue</p>
+                    <div id="progres" class="bg-slate-300 rounded-xl h-3 w-40">
+                        <div id="progres-done" class="bg-purple-500 rounded-xl h-3 w-20"></div>
+                    </div>
+               </div>
+                   </div>
+
+                </div>
+                <!-- b -->
+                <div class="container-dasboard overflow-scroll  w-1/4">
+                    <div class="flex justify-between">
+                        <h1 class="title-font mb-5"> RECENT BUYERS</h1>
+                        <img src="./img/icons8-reset-24.png" alt="" class="w-5 h-5">
+                    </div>
+                    <div class="flex justify-between border-b-2 border-slate-200 pb-3 items-center">
+                       <div class="flex  gap-3 items-center">
+                        <img src="./img/profile.png" class="w-10 h-10">
+                        <div class="flex flex-col justify-center">
+                            <h1>Walkin</h1>
+                            <h1 class="bg-green-400 rounded-xl w-11 text-center text-slate-50 text-sm">Paid</h1>
+                        </div>
+                       </div>
+                       <h1> 108.00$</h1>
+                    </div>
+                </div>
+            </div>
+            <!-- 2 -->
+            <div class=" flex gap-5">
+                <!-- a -->
+                <div class="container-dasboard w-3/4">
+                    <div class="flex justify-between mb-5 ">
+                        <h1 class="title-font">RECENT INVOICES</h1>
+                        
+                        <div class=" flex gap-5">
+                            <button type="submit" class=" py-2 px-4 rounded-lg text-slate-50 bg-cyan-500"> Add Sale</button>
+                            <button type="submit" class=" py-2 px-4 rounded-lg text-slate-50 bg-green-500"> Manage Invoices</button>
+                        </div>
+                    </div>
+                    <table class="border-y-2 w-full p-5 text-center">
+                        <tr class="h-10">
+                            <th>Invoke</th>
+                            <th>Customer</th>
+                            <th>Invoice Due Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr class="h-10 border-y-2">
+                            <td >
+                                <h1 class="text-green-400">INV#1</h1>
+                            </td>
+                            <td>
+                                <h1>Walkin</h1>
+                            </td>
+                            <td>
+                                <h1>20-03-2023</h1>
+                            </td>
+                            <td>
+                                <h1>108.00$</h1>
+                            </td>
+                            <td>
+                                <h1 class="bg-green-400 rounded-xl mx-auto w-11 text-slate-50 text-sm">Paid</h1>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                   <!-- b -->
+                   <div class="container-dasboard w-1/4 flex flex-col justify-center items-center ">
+                           <h1 class="title-font mb-5">Income & Expenses</h1>
+
+                           <div class="w-60 h-60 flex items-center justify-center">
+                                <div class="bg-blue-700 w-48 h-48 rounded-full flex items-center justify-center" id="progress">
+                                    <div class="bg-white w-36 h-36 rounded-full flex  flex-col items-center justify-center">
+                                        <h1>Income</h1>
+                                        <h1>96%</h1>
+                                    </div>
+                                </div>
+                           </div>
+                   </div>
+            </div>
+           
+            
+            <!-- 4 -->
+            <div class="flex gap-5">
+                <div class="container-dasboard h-52 w-3/4">
+                    <div class="flex justify-between mb-10 pr-8">
+                        <h1 class="title-font text-lg">RECENT <span class="border-2 bg-cyan-500 rounded-md p-1 text-slate-50">TRANSACTIONS</span></h1>
+                        <img src="./img/icons8-reset-24.png" alt="" class="w-5 h-5">
+                    </div>
+                    <table class="border-y-2 w-full p-5 text-center">
+                        <tr class="h-10">
+                            <th>Payment Date</th>
+                            <th>Transaction Account</th>
+                            <th>Debit</th>
+                            <th>Credit</th>
+                            <th>Payment method</th>
+                        </tr>
+                        <tr class="h-10 border-y-2">
+                            <td >
+                                <h1 class="text-green-400">20-03-2023#1</h1>
+                            </td>
+                            <td>
+                                <h1>Default Account</h1>
+                            </td>
+                            <td>
+                                <h1>0.00$</h1>
+                            </td>
+                            <td>
+                                <h1>108.00$</h1>
+                            </td>
+                            <td>
+                                <h1>Cash</h1>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="container-dasboard h-52 w-1/4">
+                    <h1 class="title-font mb-5">STOCK ALERT</h1>
+
+                    <div class="flex flex-col gap-2">
+                        <p class=" text-blue-400">stock 1</p>
+                        <div id="progres" class="bg-slate-300 rounded-xl h-3 w-40">
+                            <div id="progres-done" class="bg-blue-400 rounded-xl h-3 w-0"></div>
+                        </div>
+                </div>
+                </div>
+            </div>
+            <!-- 5 -->
+            <div class="flex gap-5">
+                <div class="container-dasboard  h-full w-3/4">
+                    <h1 class="title-font text-3xl font-normal">Cash Flow</h1>
+                    <h1 class="title-font text-lg font-medium"> GRAPHICAL PRESENTATION OF Cash Flow DONE IN LAST 30 DAYS</h1>
+
+                    <div class=" flex gap-4 mt-4 text-green-600">
+                        <a href="#" class="p-2 text-green-400" :class="{active: chart === 'income'}" @click.prevent="chart ='income'">Income</a>
+                        <a href="#" class="p-2 text-green-400" :class="{active: chart === 'expenses'}" @click.prevent="chart ='expenses'">Expenses</a>
+                    </div>
+
+                    <div v-show="chart === 'income'">
+                        <div id="incomechart_values"></div>
+                    </div>
+
+                    <div v-show="chart === 'expenses'">
+                        <div id="expenseschart_values"></div>
+                    </div>
+
+                </div>
+                <div class="container-dasboard w-2/4 h-full flex flex-col container">
+                    <div class="flex gap-2 items-center">
+                        <h1 class="title-font">TASK MANAGER</h1>
+                        <img src="./img/icons8-forward-button-24.png" alt="" class=" w-5 h-5">
+                    </div>
+                    <div class="flex gap-2 my-4">
+                      <button type="submit" class="tm-btn">Copy</button>
+                      <button type="submit" class="tm-btn">Excel</button>
+                      <button type="submit" class="tm-btn">CSV</button>
+                      <button type="submit" class="tm-btn">PDF</button>
+                      <button type="submit" class="tm-btn">Print</button>
+                    </div>
+                    <div class="flex gap-2">
+                        <label for="src">search :</label>
+                        <input type="search" name="" id="src" class="border-2 outline-none rounded-md pl-2  mr-44 focus:border-2 focus:border-green-500">
+                        <label for="enrty">Show entry :</label>
+                        <input type="number" name="" id="entry" class="border-2 w-10 rounded-md text-center outline-none focus:border-2 focus:border-green-500">
+                    </div>
+                    <div class="">
+                        <table class="border-2 w-full h-10 mt-10 text-center">
+                            <tr>
+                                <th>Task</th>
+                                <th>Start Date</th>
+                                <th> Task Due Dev</th>
+                                <th>Task Status</th>
+                            </tr>
+                        </table>
+                        <div class="w-full bg-stone-100 h-10 flex items-center justify-center">
+                            <p>No data available in table</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between  items-center container h-10 mt-11">
+                        <p>Show 0 to 0 of 0 entries</p>
+                        <div class="flex gap-2">
+                            <button type="submit" class="p-2 border-2 rounded-lg border-green-500 text-green-500">
+                                Previous
+                            </buton>
+                            <button type="submit" class="p-2 border-2 rounded-lg border-green-500 text-green-500">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+</html>
