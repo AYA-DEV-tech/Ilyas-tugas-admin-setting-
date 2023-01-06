@@ -116,6 +116,16 @@
            @apply border-2 border-b-0 rounded-t-lg text-slate-600; 
          }
        }
+       @layer components {
+         .btn-dropdown {
+           @apply  relative text-slate-50 font-ubuntu font-light bg-transparent flex items-center justify-center border-none outline-none rounded-sm border-4; 
+         }
+       }
+       @layer components {
+         .dropdown {
+           @apply absolute top-full opacity-0 -translate-y-32 group-hover:translate-y-2 group-hover:opacity-100 min-w-full w-max bg-slate-50 mt-1 rounded-md text-slate-600 text-left transition-all group-hover:duration-300; 
+         }
+       }
      </style>
 </head>
 <body class="font-popins bg-slate-100">
@@ -129,7 +139,7 @@
                 <label for="hmbgr" class="hamburger">
                     <input type="checkbox" name="hmbgr" id="hmbgr" class="absolute sr-only peer">
                     <div class="z-10 absolute top-14 h-[100vh] w-72 bg-cyan-900  -translate-x-80
-                    p-5 transition-all ease-in-out duration-700 peer-checked:fixed peer-checked:opacity-100 peer-checked:-translate-x-6">
+                    p-5 transition-all ease-out duration-700 peer-checked:fixed peer-checked:opacity-100 peer-checked:-translate-x-6">
                         <p>heloo</p>
                     </div>
                     <div class="spn peer-checked:origin-top-left peer-checked:duration-300 peer-checked:rotate-45"></div>
@@ -139,10 +149,10 @@
             </div>
 
             <!-- admin setting -->
-            <button name="" id="" class=" relative text-slate-50 font-ubuntu font-light bg-transparent flex items-center justify-center border-none outline-none rounded-sm ml-5 border-4 group">
+            <button name="" id="" class="btn-dropdown ml-5 group">
                <p> Admin Settings </p>
-               <img src="./img/icons8-expand-arrow-24.png" alt="" class="w-6 h-6 transsition-all group-focus:rotate-180 group-focus:duration-300">
-               <div class="absolute top-full hidden group-focus:block min-w-full w-max bg-slate-50 mt-1 rounded-md text-slate-600 text-left transition-all group-focus:duration-700">
+               <img src="./img/icons8-expand-arrow-24.png" alt="" class="w-6 h-6 transsition-all group-hover:rotate-180 group-hover:duration-300">
+               <div class="dropdown">
                 <ul>
                     <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
                     <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
@@ -167,10 +177,10 @@
             <!-- logo bunga -->
             <img src="./img/logoBungaCrop.png" alt="" class="w-14 mx-auto">
 
-            <button name="" id="" class=" relative text-slate-50 font-ubuntu font-light bg-transparent flex items-center justify-center border-none outline-none rounded-sm mr-5 group">
+            <button name="" id="" class="btn-dropdown mr-5 group">
                 <p> Language </p>
-                <img src="./img/icons8-expand-arrow-24.png" alt="" class="w-6 h-6 transsition-all group-focus:rotate-180 group-focus:duration-300">
-                <div class="absolute top-full hidden group-focus:block min-w-full w-max bg-slate-50 mt-1 rounded-md text-slate-600 text-left transition-all group-focus:duration-700">
+                <img src="./img/icons8-expand-arrow-24.png" alt="" class="w-6 h-6 transsition-all group-hover:rotate-180 group-hover:duration-300">
+                <div class="dropdown">
                  <ul>
                      <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
                      <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
@@ -180,9 +190,13 @@
                 </div>
              </button>
 
-            <div class="flex mr-6 relative">
+            <div class="flex mr-6 relative group">
                 <img src="./img/icons8-doorbell-24.png" alt="" class="w-6">
                 <div class="notif text-sm">0</div>
+                <!-- <div class="h-80 w-52 border-2 bg-slate-200 absolute rounded p-5 hidden transition-all duration-300  group-hover:block">
+                    <img src="./img/icons8-no-message-100.png" alt="" class=" w-10 mx-auto">
+                    <p class="text-center mt-6 font-normal text-xs">No notification</p>
+                </div> -->
             </div>
 
             <div class="flex mr-6 relative">
@@ -196,10 +210,10 @@
             </div>
             <img src="./img/icons8-user-16.png" alt="" class="w-9 rounded-full mr-2">
 
-            <button name="" id="" class=" relative text-slate-50 font-ubuntu font-light bg-transparent flex items-center justify-center border-none outline-none rounded-xl mr-5 group">
+            <button name="" id="" class="btn-dropdown mr-5 group">
                 <p> Jhon Doe </p>
-                <img src="./img/icons8-expand-arrow-24.png" alt="" class="w-6 h-6 transsition-all group-focus:rotate-180 group-focus:duration-300">
-                <div class="absolute top-full hidden group-focus:block min-w-full w-max bg-slate-50 mt-1 rounded-md text-slate-600 text-left transition-all group-focus:duration-700">
+                <img src="./img/icons8-expand-arrow-24.png" alt="" class="w-6 h-6 transsition-all group-hover:rotate-180 group-hover:duration-300">
+                <div class="dropdown">
                  <ul>
                      <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
                      <li class="border-b-2 py-1 px-1 hover:bg-gray-200">menu dropdown</li>
